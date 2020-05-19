@@ -1,5 +1,5 @@
 let numbers = document.querySelectorAll('.number');
-let display = document.getElementsByClassName('.display');
+let display = document.querySelector('.display');
 let operation = document.querySelectorAll('.operator');
 
 let firstValue = '';
@@ -43,6 +43,26 @@ function show(event) {
     textArea.value = finalValue;
 }
 
-// function displayNumbers() {
-//     let firstvalue = display.value
-// }
+//Display numbers
+numbers.forEach((number) => {
+    number.addEventListener('click', function(e) {
+        let value = display.value;
+        let finalValue = value + e.target.innerHTML;
+        display.value = finalValue;
+    })
+});
+
+//Clear numbers
+let clearBtn = document.getElementById('clear');
+clearBtn.addEventListener('click', function(e) {
+    display.value = "";
+});
+
+// add operation
+operation.forEach((operator) => {
+    operator.addEventListener('click', function(e) {
+        let value = display.value;
+        let finalValue = value + " " + e.target.innerHTML + " ";
+        display.value = finalValue;
+    })
+});
