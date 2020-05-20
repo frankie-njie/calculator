@@ -1,8 +1,9 @@
 let numbers = document.querySelectorAll('.number');
 let display = document.querySelector('.display');
 let operation = document.querySelectorAll('.operator');
+let deleteBtn = document.getElementById('back');
 
-let firstValue = '';
+let firstValue;
 let secondValue = '';
 
 
@@ -36,12 +37,12 @@ function operate(operator, a, b) {
         return "Select an operator";
 }
 
-function show(event) {
-    let textArea = document.querySelector('.display');
-    let value = textArea.value;
-    let finalValue = value + event.innerHTML;
-    textArea.value = finalValue;
-}
+// function show(event) {
+//     let textArea = document.querySelector('.display');
+//     let value = textArea.value;
+//     let finalValue = value + event.innerHTML;
+//     textArea.value = finalValue;
+// }
 
 //Display numbers
 numbers.forEach((number) => {
@@ -66,3 +67,12 @@ operation.forEach((operator) => {
         display.value = finalValue;
     })
 });
+
+// Delete value
+function deleteValue() {
+    let textValue = display.value;
+    let finalValue = textValue.slice(0, -1);
+    display.value = finalValue;
+}
+
+deleteBtn.addEventListener('click', deleteValue);
