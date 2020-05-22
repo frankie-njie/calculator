@@ -1,9 +1,11 @@
 let numbers = document.querySelectorAll('.number');
 let display = document.querySelector('.display');
 let operation = document.querySelectorAll('.operator');
+
 let deleteBtn = document.getElementById('back');
 let answerButton = document.getElementById('equals');
 let decimalBtn = document.getElementById('decimal');
+let remainderBtn = document.getElementById('remainder')
 
 //Calculator functions
 function add(a, b) {
@@ -22,6 +24,10 @@ function divide(a, b) {
     return a / b;
 }
 
+function remainder(a, b) {
+    return a % b;
+}
+
 function operate(operator, a, b) {
     switch (operator) {
         case '+':
@@ -32,6 +38,8 @@ function operate(operator, a, b) {
             return multiply(a, b);
         case '÷':
             return divide(a, b);
+        case '%':
+            return remainder(a, b);
         default:
             return 'Select an operator';
     }
@@ -100,7 +108,7 @@ function answer() {
     let firstNumber;
     let lastNumber;
     for (let i = 0; i < values.length; i++) {
-        if (values[i] === '+' || values[i] === "-" || values[i] === "*" || values[i] === "÷") {
+        if (values[i] === '+' || values[i] === "-" || values[i] === "*" || values[i] === "÷" || values[i] === "%") {
             finalOperationPos = values.indexOf(values[i]);
             finalOperation = values[i];
 
